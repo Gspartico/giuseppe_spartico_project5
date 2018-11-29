@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import randomMovie from 'randomMovie.js'
 
-// const baseURL = `https://api.themoviedb.org/3/`;
 const apiKey = `875e4d600eaf27cc3eaca8c5bf1ac2a8`
-// const apiKey = `f0ba00aa70aa95e488fb89869bf99a39`
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      movie: axios
+      movie: ''
     };
   };
 
-  
 
-  componentDidMount(){
+//create a method that calls in the axios. in this call the with_genre will refer to the genre_id in state.
+getMovies = id => {
     return axios({
       method: 'GET',
       url: `https://api.themoviedb.org/3/discover/movie`,
-      dataType: 'jsonp',
+      dataType: 'json',
       params: {
         api_key: apiKey,
         language:'en-US', 
@@ -28,40 +27,44 @@ class App extends Component {
         include_adult: 'false', 
         include_video: 'false', 
         page: 1,
-        with_genres: 28
-
+        with_genres: id
       }
-    }).then((response) => {
-      response = response.data.results
-      // console.log(response)
+    }).then((res) => {
+      res = res.data.results
       this.setState({
-        movie: response
-        
+        movie: res  
       })
     })
-      // response = response.data
-      // console.log(response.data.results.genre_ids);
-      // this.state({
-      //   movies: response
-      // })
-}
-handleClick = () =>{
-  console.log('i work')
-  const getMovie = Array.from(this.state.movie)
-  console.log(getMovie)
-  this.setState({
-    response: getMovie
-  })
+  }
+
+
+//on click of button grab value of button and update the state, right after updating the state we call the api
+handleClick = e =>{
+  const movieID = e.target.value
+  console.log(e.target.value)
+  this.getMovies(movieID)
+  
+  // console.log('i work')
+  // const getMovie = Array.from(this.state.movie)
+  // console.log(getMovie)
+  // this.setState({
+  //   response: getMovie
+  // })
 //   // this.setState({
 //   //   [e.target.]
 //   // })
 }
 
   render() {
+    console.log(this.state.movie)
     return (
       <div className="App">
       <h1>Test button</h1>
-        <button onClick={this.handleClick}>Get a movie</button>
+        <button value='35' onClick={this.handleClick} name='sunny'>Sunny</button>
+        <button value='18' onClick={this.handleClick}>Rainy</button>
+        <button value='27' onClick={this.handleClick}>Foggy</button>
+        <button value='9648' onClick={this.handleClick}>Cloudy</button>
+        <button value='28' onClick={this.handleClick}>Disaster Alert</button>
         
       </div>
     );
