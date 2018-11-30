@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import Header from './Header.js';
+import Description from './Description.js'
 // import randomMovie from 'randomMovie.js'
 
 const apiKey = `875e4d600eaf27cc3eaca8c5bf1ac2a8`
@@ -60,12 +61,24 @@ handleClick = e =>{
     return (
       <section>
       <Header />
+      <Description />
       <div className="App wrapper">
+        <div>
         <button value='35' onClick={this.handleClick}>Sunny</button>
+        </div>
+        <div>
         <button value='18' onClick={this.handleClick}>Rainy</button>
+        </div>
+        <div>
         <button value='27' onClick={this.handleClick}>Foggy</button>
+        </div>
+        <div>
         <button value='9648' onClick={this.handleClick}>Cloudy</button>
+        </div>
+        <div className="disaster">
+          <img src="/assets/Tornado.png" alt=""/>
         <button value='28' onClick={this.handleClick}>Disaster Alert</button> 
+        </div>
       </div>
       <div>
         <h2>{this.state.movie.title}</h2>
