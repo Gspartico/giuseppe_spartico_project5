@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import randomMovie from 'randomMovie.js'
+import Header from './Header.js';
+// import randomMovie from 'randomMovie.js'
 
 const apiKey = `875e4d600eaf27cc3eaca8c5bf1ac2a8`
 
@@ -9,7 +10,7 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      movie: ''
+      movie: []
     };
   };
 
@@ -26,47 +27,54 @@ getMovies = id => {
         sort_by: 'popularity.desc', 
         include_adult: 'false', 
         include_video: 'false', 
-        page: 1,
+        page: 2,
         with_genres: id
       }
     }).then((res) => {
       res = res.data.results
       this.setState({
-        movie: res  
+        movie: res 
       })
+      this.randomMovie()
     })
   }
 
+randomMovie = () => {
+  // console.log(this.state.movie.length)
+  const randomNumber =this.state.movie[Math.floor(Math.random() * this.state.movie.length)]
+  // console.log(this.state.movie,'this is my movie')
+  console.log(randomNumber)
+  this.setState({
+    movie: randomNumber
+  })
+}
 
 //on click of button grab value of button and update the state, right after updating the state we call the api
 handleClick = e =>{
   const movieID = e.target.value
-  console.log(e.target.value)
+  // console.log(e.target.value)
   this.getMovies(movieID)
-  
-  // console.log('i work')
-  // const getMovie = Array.from(this.state.movie)
-  // console.log(getMovie)
-  // this.setState({
-  //   response: getMovie
-  // })
-//   // this.setState({
-//   //   [e.target.]
-//   // })
 }
 
   render() {
     console.log(this.state.movie)
     return (
+      <section>
+      <Header />
       <div className="App">
       <h1>Test button</h1>
         <button value='35' onClick={this.handleClick} name='sunny'>Sunny</button>
         <button value='18' onClick={this.handleClick}>Rainy</button>
         <button value='27' onClick={this.handleClick}>Foggy</button>
         <button value='9648' onClick={this.handleClick}>Cloudy</button>
-        <button value='28' onClick={this.handleClick}>Disaster Alert</button>
-        
+        <button value='28' onClick={this.handleClick}>Disaster Alert</button> 
       </div>
+      <div>
+        <h2>{this.state.movie.title}</h2>
+        <img src="{this.state.movie.poster_path.jpg}" alt=""/>
+        <p>{this.state.movie.overview}</p>
+      </div>
+      </section>
     );
   }
 }
