@@ -1,7 +1,32 @@
+.wrapper{
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 Header{
   text-align: center;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .App {
   text-align: center;
+
+}
+
+
+section{
+  background-image: url(./assets/Bored_Boy_On_Couch.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  
+}
+
+h1{
+  margin: 0;
 }

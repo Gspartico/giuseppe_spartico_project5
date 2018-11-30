@@ -14,7 +14,6 @@ class App extends Component {
     };
   };
 
-
 //create a method that calls in the axios. in this call the with_genre will refer to the genre_id in state.
 getMovies = id => {
     return axios({
@@ -27,7 +26,7 @@ getMovies = id => {
         sort_by: 'popularity.desc', 
         include_adult: 'false', 
         include_video: 'false', 
-        page: 2,
+        page: Math.floor(Math.random() * 6),
         with_genres: id
       }
     }).then((res) => {
@@ -61,9 +60,8 @@ handleClick = e =>{
     return (
       <section>
       <Header />
-      <div className="App">
-      <h1>Test button</h1>
-        <button value='35' onClick={this.handleClick} name='sunny'>Sunny</button>
+      <div className="App wrapper">
+        <button value='35' onClick={this.handleClick}>Sunny</button>
         <button value='18' onClick={this.handleClick}>Rainy</button>
         <button value='27' onClick={this.handleClick}>Foggy</button>
         <button value='9648' onClick={this.handleClick}>Cloudy</button>
@@ -71,7 +69,7 @@ handleClick = e =>{
       </div>
       <div>
         <h2>{this.state.movie.title}</h2>
-        <img src="{this.state.movie.poster_path.jpg}" alt=""/>
+          <img src={`http://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`} alt="Movie poster of the random movie that is called in on the user button click."/>
         <p>{this.state.movie.overview}</p>
       </div>
       </section>
