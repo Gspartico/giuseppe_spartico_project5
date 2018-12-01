@@ -32,7 +32,7 @@ Header{
   line-height: 1.5;
   letter-spacing: 0.3px;
   font-family: 'Karla', sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 span{
@@ -58,6 +58,32 @@ h1{
   margin: 0;
 }
 
-.disaster img{
-  width: 100%;
+.disaster div{
+  padding: 100px 10px;
+  background-image: url(./assets/volcano.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* .disaster{
+  padding: 50px 20px;
+  background-image: url(./assets/Tornado.png);
+  background-size: cover;
+  background-position: center;
+} */
+
+button{
+  border-radius: 50%;
+  height: 60px;
+}
+
+.movie-info{
+  display: flex;
+}
+
+.movie-description{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }

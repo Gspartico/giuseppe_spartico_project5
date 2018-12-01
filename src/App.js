@@ -3,7 +3,6 @@ import './App.css';
 import axios from 'axios';
 import Header from './Header.js';
 import Description from './Description.js'
-// import randomMovie from 'randomMovie.js'
 
 const apiKey = `875e4d600eaf27cc3eaca8c5bf1ac2a8`
 
@@ -11,7 +10,8 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      movie: []
+      movie: [],
+      visuallyhidden: true
     };
   };
 
@@ -54,6 +54,11 @@ handleClick = e =>{
   const movieID = e.target.value
   // console.log(e.target.value)
   this.getMovies(movieID)
+  let show = this.state.visuallyhidden;
+  show = false;
+  this.setState({
+    visuallyhidden: false
+  })
 }
 
   render() {
@@ -76,15 +81,17 @@ handleClick = e =>{
         <button value='9648' onClick={this.handleClick}>Cloudy</button>
         </div>
         <div className="disaster">
-          <img src="/assets/Tornado.png" alt=""/>
+        <div><img src="/assets/Tornado.png" alt=""/></div>
         <button value='28' onClick={this.handleClick}>Disaster Alert</button> 
         </div>
       </div>
-      <div>
-        <h2>{this.state.movie.title}</h2>
+      <section className={this.state.visuallyhidden ? 'visuallyhidden' : 'movie-info'}>
+        <div className="movie-description">
+          <h2>{this.state.movie.title}</h2>
+          <p>{this.state.movie.overview}</p>
+        </div>
           <img src={`http://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`} alt="Movie poster of the random movie that is called in on the user button click."/>
-        <p>{this.state.movie.overview}</p>
-      </div>
+      </section>
       </section>
     );
   }
