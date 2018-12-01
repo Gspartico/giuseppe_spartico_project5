@@ -8,8 +8,17 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 
 .wrapper{
-  max-width: 1280px;
+  max-width: 1100px;
   margin: 0 auto;
+}
+
+body{
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.6)),  url(./assets/Bored_Boy_On_couch.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;  
 }
 
 Header{
@@ -18,67 +27,67 @@ Header{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.3);
+  /* background: rgba(255, 255, 255, 0.3); */
   font-size: 62.5%;
   font-family: 'Spectral', serif;
   font-weight: 700;
   font-size: 1.7rem;
+  color: #F8F8FF;
+  text-shadow: 2px 2px black;
+
+}
+
+h1{
+  margin: 5px 0;
+}
+
+.description{
+  margin-top: 30px;
 }
 
 .about{
-  background: rgba(255, 255, 255, 0.3);
-  padding: 10px 20px;
+  /* background: rgba(255, 255, 255, 0.3); */
+  padding: 20px 30px;
   text-align: center;
   line-height: 1.5;
   letter-spacing: 0.3px;
   font-family: 'Karla', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  color: #F8F8FF;
+  text-shadow: 2px 2px black;
 }
 
 span{
   font-weight: 700;
   font-size: 1.5rem;
+  color: #FF0000;
 }
 
 .App {
   text-align: center;
   display: flex;
   justify-content: space-evenly;
+  margin: 50px auto 50px auto;
 }
-
-section{
-  background-image: url(./assets/Bored_Boy_On_Couch.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;  
-}
-
-h1{
-  margin: 0;
-}
-
-.disaster div{
-  padding: 100px 10px;
-  background-image: url(./assets/volcano.jpg);
-  background-size: cover;
-  background-position: center;
-}
-
-/* .disaster{
-  padding: 50px 20px;
-  background-image: url(./assets/Tornado.png);
-  background-size: cover;
-  background-position: center;
-} */
 
 button{
   border-radius: 50%;
-  height: 60px;
+  height: 90px;
+  width: 90px;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .movie-info{
   display: flex;
+}
+
+h2{
+  font-family: 'Spectral', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 .movie-description{
@@ -86,4 +95,20 @@ button{
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.3;
+  line-height: 1.4;
+  width: 60%;
+  margin: 0 50px;
+  color: #F8F8FF;
+  text-shadow: 2px 2px #000;
+}
+
+.movie-poster{
+  width: 40%;
+}
+
+img{
+  max-width: 100%;
 }

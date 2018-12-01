@@ -64,7 +64,7 @@ handleClick = e =>{
   render() {
     console.log(this.state.movie)
     return (
-      <section>
+      <body>
       <Header />
       <Description />
       <div className="App wrapper">
@@ -80,19 +80,20 @@ handleClick = e =>{
         <div>
         <button value='9648' onClick={this.handleClick}>Cloudy</button>
         </div>
-        <div className="disaster">
-        <div><img src="/assets/Tornado.png" alt=""/></div>
+        <div>
         <button value='28' onClick={this.handleClick}>Disaster Alert</button> 
         </div>
       </div>
-      <section className={this.state.visuallyhidden ? 'visuallyhidden' : 'movie-info'}>
+      <section className={this.state.visuallyhidden ? 'visuallyhidden' : 'movie-info wrapper'}>
         <div className="movie-description">
           <h2>{this.state.movie.title}</h2>
           <p>{this.state.movie.overview}</p>
         </div>
+        <div className="movie-poster">
           <img src={`http://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`} alt="Movie poster of the random movie that is called in on the user button click."/>
+        </div>  
       </section>
-      </section>
+      </body>
     );
   }
 }
