@@ -6,10 +6,62 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 .visuallyhidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
 
+/* Global styles */
 
 .wrapper{
   max-width: 1100px;
   margin: 0 auto;
+}
+
+Header,
+h2{
+  font-family: 'Spectral', serif;
+  font-weight: 700;
+}
+
+.about,
+button,
+.movie-description{
+  font-family: 'Karla', sans-serif;
+  letter-spacing: 0.3;
+}
+
+Header,
+.App,
+.movie-info,
+.movie-description{
+  display: flex;
+}
+
+span,
+button{
+  font-weight: 700;
+}
+
+Header,
+.movie-description{
+  align-items: center;
+}
+
+Header,
+.about,
+.movie-description,
+.rainy:hover,
+.foggy:hover,
+.disaster:hover{
+  color: #F8F8FF;
+  text-shadow: 2px 2px #000;
+}
+
+.about,
+.App,
+.movie-description{
+  text-align: center;
+}
+
+Header,
+.App{
+  justify-content: space-evenly;
 }
 
 body{
@@ -22,15 +74,10 @@ body{
   font-size: 62.5%;
 }
 
+/* Header styles */
+
 Header{
   height: 13vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  font-family: 'Spectral', serif;
-  font-weight: 700;
-  color: #F8F8FF;
-  text-shadow: 2px 2px black;
 }
 
 h1{
@@ -42,31 +89,26 @@ Header i{
   font-size: 5rem
 }
 
+/* App description styles */
+
 .description{
   margin-top: 40px;
 }
 
 .about{
   padding: 0 30px;
-  text-align: center;
   line-height: 1.5;
-  letter-spacing: 0.3px;
-  font-family: 'Karla', sans-serif;
   font-size: 1.3rem;
-  color: #F8F8FF;
-  text-shadow: 2px 2px black;
 }
 
 span{
-  font-weight: 700;
   font-size: 1.5rem;
   color: #FF0000;
 }
 
+/* Button styles */
+
 .App {
-  text-align: center;
-  display: flex;
-  justify-content: space-evenly;
   margin: 50px auto 50px auto;
   flex-wrap: wrap;
 }
@@ -75,12 +117,10 @@ button{
   border-radius: 50%;
   height: 90px;
   width: 90px;
-  font-family: 'Karla', sans-serif;
   font-size: 1.1rem;
-  font-weight: 700;
   border: none;
   box-shadow: 2px 5px 0 #fff, 0 10px 10px rgba(0, 0, 0, .35);
-  transition: background-color 0.7s ease, box-shadow 0.7s ease;
+  transition: background-color 0.7s ease, box-shadow 0.7s ease, color 0.6s ease, text-shadow 0.6s ease;
 }
 
 button:focus{
@@ -89,56 +129,44 @@ button:focus{
 
 .sunny:hover{
   background-color: #FFD700;
-  box-shadow: 2px 5px 0 #FFD700, 0 10px 10px rgba(0, 0, 0, .35);
+  box-shadow: 3px 5px 0 #FFD700, 0 10px 10px rgba(0, 0, 0, .35);
 }
 
 .rainy:hover{
   background-color: #4a6583;
-  box-shadow: 2px 5px 0 #4a6583, 0 10px 10px rgba(0, 0, 0, .35);
+  box-shadow: 3px 5px 0 #4a6583, 0 10px 10px rgba(0, 0, 0, .35);
 }
 
 .foggy:hover{
   background-color: #808080;
-  box-shadow: 2px 5px 0 #808080, 0 10px 10px rgba(0, 0, 0, .35);
+  box-shadow: 3px 5px 0 #808080, 0 10px 10px rgba(0, 0, 0, .35);
 }
 
 .cloudy:hover{
   background-color: #6495ED;
-  box-shadow: 2px 5px 0 #6495ED, 0 10px 10px rgba(0, 0, 0, .35);
+  box-shadow: 3px 5px 0 #6495ED, 0 10px 10px rgba(0, 0, 0, .35);
 }
 
 .disaster:hover{
   background-color: #B22222;
-  box-shadow: 2px 5px 0 #B22222, 0 10px 10px rgba(0, 0, 0, .35);
+  box-shadow: 3px 5px 0 #B22222, 0 10px 10px rgba(0, 0, 0, .35);
 }
 
-.movie-info{
-  display: flex;
-}
+/* Appended movie information styles */
 
 h2{
-  font-family: 'Spectral', serif;
   font-size: 2.5rem;
-  font-weight: 700;
   margin: 0;
   border-bottom: 2px solid #FF0000;
-
 }
 
 .movie-description{
-  display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
-  font-family: 'Karla', sans-serif;
   font-size: 1.4rem;
-  letter-spacing: 0.3;
   line-height: 1.4;
   width: 60%;
   margin: 0 50px;
-  color: #F8F8FF;
-  text-shadow: 2px 2px #000;
-  align-items: center;
 }
 
 .movie-poster{
@@ -149,6 +177,8 @@ img{
   max-width: 100%;
   margin-bottom: 10px;
 }
+
+/* Responsive styles */
 
 @media(max-width:1140px){
   img{

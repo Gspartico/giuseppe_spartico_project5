@@ -2,20 +2,31 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import Header from './Header.js';
-import Description from './Description.js'
+import Description from './Description.js';
+// import firebase from './firebase.js';
 
-const apiKey = `875e4d600eaf27cc3eaca8c5bf1ac2a8`
+// const dbRef = firebase.database().ref();
+const apiKey = `875e4d600eaf27cc3eaca8c5bf1ac2a8`;
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
       movie: [],
-      visuallyhidden: true
+      visuallyhidden: true,
+      // movieList: {}
     };
   };
 
-//create a method that calls in the axios. in this call the with_genre will refer to the genre_id in state.
+  // componentDidMount(){
+  //   deRef.on('value', (snapshot) => {
+  //     this.setState({
+  //       movieList: snapsot.val()
+  //     });
+  //   });
+  // }
+
+//create a method that calls in the axios. in this call the with_genre will refer to the genre_id in state and randomize which array (page) it will pull a movie from.
 getMovies = id => {
     return axios({
       method: 'GET',
@@ -39,6 +50,7 @@ getMovies = id => {
     })
   }
 
+//Create a method that will randomize the which object within the called in array that gets appended to the page in state.
 randomMovie = () => {
   const randomNumber =this.state.movie[Math.floor(Math.random() * this.state.movie.length)]
   console.log(randomNumber)
@@ -47,7 +59,7 @@ randomMovie = () => {
   })
 }
 
-//on click of button grab value of button and update the state, right after updating the state we call the api
+//On click of button grab value of button and update the state, right after updating the state we call the api. Also removes the visuallyhidden class from the movie information being appended to DOM change to show upon click.
 handleClick = e =>{
   const movieID = e.target.value
   this.getMovies(movieID)
@@ -65,6 +77,7 @@ handleClick = e =>{
         <Description />
         <div className="App wrapper">
           <div>
+            {/* Add number that references to a specific genre id to the value, which will be passed into the axios call to call in movies with that genre ID on click of button */}
             <button value='35' className="sunny" onClick={this.handleClick}>Sunny</button>
           </div>
           <div>
@@ -80,6 +93,7 @@ handleClick = e =>{
             <button value='28' className="disaster" onClick={this.handleClick}>Disaster Alert</button> 
           </div>
         </div>
+        {/* Append movie title, description, and poster to DOM on click. Add ternary operator to toggle visuallyhidden class so section shows on click */}
         <section className={this.state.visuallyhidden ? 'visuallyhidden' : 'movie-info wrapper'}>
           <div className="movie-description">
             <h2>{this.state.movie.title}</h2>
@@ -87,18 +101,11 @@ handleClick = e =>{
           </div>
           <div className="movie-poster">
             <img src={`http://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`} alt="Movie poster of the random movie that is called in on the user button click."/>
-          </div>  
-        </section>
+          </div>
+        </section>   
       </body>
     );
   }
 }
 
 export default App;
-
-//Call in Moviedb discover/movies API using axios
-//Isolate the genre_id's in response.results genre_ID"
-
-//link each genre to five different weather options that can be selected by a user
-//when weather option is selected, on click of button randomly pull a movie in the associated array
-//append movie title and image to DOM with results.title and results.poster_path
