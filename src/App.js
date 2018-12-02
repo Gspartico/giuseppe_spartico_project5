@@ -40,9 +40,7 @@ getMovies = id => {
   }
 
 randomMovie = () => {
-  // console.log(this.state.movie.length)
   const randomNumber =this.state.movie[Math.floor(Math.random() * this.state.movie.length)]
-  // console.log(this.state.movie,'this is my movie')
   console.log(randomNumber)
   this.setState({
     movie: randomNumber
@@ -52,7 +50,6 @@ randomMovie = () => {
 //on click of button grab value of button and update the state, right after updating the state we call the api
 handleClick = e =>{
   const movieID = e.target.value
-  // console.log(e.target.value)
   this.getMovies(movieID)
   let show = this.state.visuallyhidden;
   show = false;
@@ -62,37 +59,36 @@ handleClick = e =>{
 }
 
   render() {
-    console.log(this.state.movie)
     return (
       <body>
-      <Header />
-      <Description />
-      <div className="App wrapper">
-        <div>
-        <button value='35' onClick={this.handleClick}>Sunny</button>
+        <Header />
+        <Description />
+        <div className="App wrapper">
+          <div>
+            <button value='35' className="sunny" onClick={this.handleClick}>Sunny</button>
+          </div>
+          <div>
+            <button value='18' className="rainy" onClick={this.handleClick}>Rainy</button>
+          </div>
+          <div>
+            <button value='27' className="foggy" onClick={this.handleClick}>Foggy</button>
+          </div>
+          <div>
+            <button value='9648' className="cloudy" onClick={this.handleClick}>Cloudy</button>
+          </div>
+          <div>
+            <button value='28' className="disaster" onClick={this.handleClick}>Disaster Alert</button> 
+          </div>
         </div>
-        <div>
-        <button value='18' onClick={this.handleClick}>Rainy</button>
-        </div>
-        <div>
-        <button value='27' onClick={this.handleClick}>Foggy</button>
-        </div>
-        <div>
-        <button value='9648' onClick={this.handleClick}>Cloudy</button>
-        </div>
-        <div>
-        <button value='28' onClick={this.handleClick}>Disaster Alert</button> 
-        </div>
-      </div>
-      <section className={this.state.visuallyhidden ? 'visuallyhidden' : 'movie-info wrapper'}>
-        <div className="movie-description">
-          <h2>{this.state.movie.title}</h2>
-          <p>{this.state.movie.overview}</p>
-        </div>
-        <div className="movie-poster">
-          <img src={`http://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`} alt="Movie poster of the random movie that is called in on the user button click."/>
-        </div>  
-      </section>
+        <section className={this.state.visuallyhidden ? 'visuallyhidden' : 'movie-info wrapper'}>
+          <div className="movie-description">
+            <h2>{this.state.movie.title}</h2>
+            <p>{this.state.movie.overview}</p>
+          </div>
+          <div className="movie-poster">
+            <img src={`http://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`} alt="Movie poster of the random movie that is called in on the user button click."/>
+          </div>  
+        </section>
       </body>
     );
   }
