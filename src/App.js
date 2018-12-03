@@ -85,12 +85,12 @@ handleClick = e =>{
 
   render() {
     return (
-      <body>
+      <div>
         <Header />
         <Description />
-        <div className="App wrapper">
-          <div>
+          <div className="App wrapper">
             {/* Add number that references to a specific genre id to the value, which will be passed into the axios call to call in movies with that genre ID on click of button */}
+          <div>  
             <button value='35' className="sunny" onClick={this.handleClick}>Sunny</button>
           </div>
           <div>
@@ -115,8 +115,8 @@ handleClick = e =>{
           <div className="movie-poster">
             <img src={`http://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`} alt="Movie poster of the random movie that is called in on the user button click."/>
           </div>
-        </section>   
-      </body>
+        </section> 
+        </div>  
     );
   }
 }
