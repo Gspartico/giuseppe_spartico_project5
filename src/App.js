@@ -39,7 +39,7 @@ getMovies = id => {
         sort_by: 'popularity.desc', 
         include_adult: 'false', 
         include_video: 'false', 
-        page: Math.floor(Math.random() * 6),
+        page: Math.floor(Math.random() * 6 + 1),
         with_genres: id
       }
     }).then((res) => {
@@ -73,7 +73,6 @@ handleClick = e =>{
     visuallyhidden: false
   })
 }
-
 
 // onClick = () =>{
 //   const pulledMovieName = {

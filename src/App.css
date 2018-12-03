@@ -13,6 +13,16 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
   margin: 0 auto;
 }
 
+body{
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),  url(./assets/Bored-Boy-On-Couch.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;  
+  font-size: 62.5%;
+}
+
 Header,
 h2{
   font-family: 'Spectral', serif;
@@ -62,16 +72,6 @@ Header,
 Header,
 .App{
   justify-content: space-evenly;
-}
-
-body{
-  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),  url(./assets/Bored-Boy-On-Couch.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  height: 100vh;  
-  font-size: 62.5%;
 }
 
 /* Header styles */
