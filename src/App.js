@@ -14,14 +14,15 @@ class App extends Component {
     this.state = {
       movie: [],
       visuallyhidden: true,
-      // movieList: {}
+      movieList: {},
+      title: '',
     };
   };
 
   // componentDidMount(){
-  //   deRef.on('value', (snapshot) => {
+  //   dbRef.on('value', (snapshot) => {
   //     this.setState({
-  //       movieList: snapsot.val()
+  //       movieList: snapshot.val()
   //     });
   //   });
   // }
@@ -62,13 +63,25 @@ randomMovie = () => {
 //On click of button grab value of button and update the state, right after updating the state we call the api. Also removes the visuallyhidden class from the movie information being appended to DOM change to show upon click.
 handleClick = e =>{
   const movieID = e.target.value
+  // const pulledMovieName = {
+  //   title: this.state.movie.title,
+  //   read: false
+  // }
+  // dbRef.push(pulledMovieName);
   this.getMovies(movieID)
-  let show = this.state.visuallyhidden;
-  show = false;
   this.setState({
     visuallyhidden: false
   })
 }
+
+
+// onClick = () =>{
+//   const pulledMovieName = {
+//     title: this.state.movie.title,
+//     read: false
+//   }
+//   dbRef.push(pulledMovieName);
+// }
 
   render() {
     return (
