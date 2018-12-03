@@ -3,9 +3,9 @@ import './App.css';
 import axios from 'axios';
 import Header from './Header.js';
 import Description from './Description.js';
-// import firebase from './firebase.js';
+import firebase from './firebase.js';
 
-// const dbRef = firebase.database().ref();
+const dbRef = firebase.database().ref();
 const apiKey = `875e4d600eaf27cc3eaca8c5bf1ac2a8`;
 
 class App extends Component {
@@ -15,17 +15,17 @@ class App extends Component {
       movie: [],
       visuallyhidden: true,
       movieList: {},
-      title: '',
     };
   };
 
-  // componentDidMount(){
-  //   dbRef.on('value', (snapshot) => {
-  //     this.setState({
-  //       movieList: snapshot.val()
-  //     });
-  //   });
-  // }
+//Set dbRef with parameters to be set later for firebase storing.
+  componentDidMount(){
+    dbRef.on('value', (snapshot) => {
+      this.setState({
+        movieList: snapshot.val()
+      });
+    });
+  }
 
 //create a method that calls in the axios. in this call the with_genre will refer to the genre_id in state and randomize which array (page) it will pull a movie from.
 getMovies = id => {
@@ -58,29 +58,21 @@ randomMovie = () => {
   this.setState({
     movie: randomNumber
   })
+  //Add variable that takes the random movie title and pushes it into firebase.
+  const pulledMovieName = {
+    title: this.state.movie.title
+  }
+  dbRef.push(pulledMovieName);
 }
 
 //On click of button grab value of button and update the state, right after updating the state we call the api. Also removes the visuallyhidden class from the movie information being appended to DOM change to show upon click.
 handleClick = e =>{
   const movieID = e.target.value
-  // const pulledMovieName = {
-  //   title: this.state.movie.title,
-  //   read: false
-  // }
-  // dbRef.push(pulledMovieName);
   this.getMovies(movieID)
   this.setState({
     visuallyhidden: false
   })
 }
-
-// onClick = () =>{
-//   const pulledMovieName = {
-//     title: this.state.movie.title,
-//     read: false
-//   }
-//   dbRef.push(pulledMovieName);
-// }
 
   render() {
     return (
